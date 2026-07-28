@@ -1,79 +1,96 @@
-// Remove a classe 'ativa' de todas as seções principais
-function resetarTelas() {
-    document.getElementById('tela-inicio').classList.remove('ativa');
-    document.getElementById('tela-anuncio').classList.remove('ativa');
-    document.getElementById('tela-cadastro_pet').classList.remove('ativa');
+/* =========================================
+   SISTEMA DE NAVEGAÇÃO (SPA)
+========================================= */
+
+// Função mestre: limpa a tela de todas as seções e reseta os cards
+function esconderTudo() {
+    // Tira a classe 'ativa' de todas as sections principais
+    document.querySelectorAll('body > section').forEach(sec => {
+        sec.classList.remove('ativa');
+    });
+
+    // Oculta as telas de detalhes dos animais e volta a mostrar os cards
+    document.querySelectorAll('.animais').forEach(el => el.classList.remove('ativa-info'));
     
-    // Oculta as telas de detalhes dos animais também
-    document.getElementById('info-gato').classList.remove('ativa-info');
-    document.getElementById('info-dog').classList.remove('ativa-info');
+    const adocao = document.getElementById('tela-anuncio_adocao');
+    const perdido = document.getElementById('tela-anuncio_perdido');
+    const search = document.querySelector('.search');
     
-    // Garante que a lista de cards apareça ao abrir a tela de anúncios
-    const cards = document.querySelectorAll('#tela-anuncio main .container > section:not(.animais)');
-    cards.forEach(card => card.style.display = 'inline-block');
+    if (adocao) adocao.style.display = 'inline-flex';
+    if (perdido) perdido.style.display = 'inline-flex';
+    if (search) search.style.display = 'block';
 }
 
-// Funções chamadas pelos botões no HTML
+// Funções chamadas pelos botões do menu e da tela inicial
 function irParaInicio() {
-    resetarTelas();
+    esconderTudo();
     document.getElementById('tela-inicio').classList.add('ativa');
 }
 
+function Login() {
+    esconderTudo();
+    document.getElementById('tela-login').classList.add('ativa');
+}
+
+function Cadastro() {
+    esconderTudo();
+    document.getElementById('tela-cadastro').classList.add('ativa');
+}
+
 function queroAdotar() {
-    resetarTelas();
+    esconderTudo();
     document.getElementById('tela-anuncio').classList.add('ativa');
 }
 
 function animaisPerdidos() {
-    resetarTelas();
-    document.getElementById('tela-anuncio').classList.add('ativa');
+    // Utiliza a mesma tela de anúncios
+    queroAdotar();
 }
 
 function publicarAnimal() {
-    resetarTelas();
+    esconderTudo();
     document.getElementById('tela-cadastro_pet').classList.add('ativa');
 }
 
-// Função para abrir os detalhes de um animal específico e esconder os outros cards
+// Função para exibir detalhes do animal e ocultar os outros cards
 function abrirDetalhesAnimal(idCardInfo) {
-    // Esconde os cards normais
-    const cards = document.querySelectorAll('#tela-anuncio main .container > section:not(.animais)');
-    cards.forEach(card => card.style.display = 'none');
+    document.getElementById('tela-anuncio_adocao').style.display = 'none';
+    document.getElementById('tela-anuncio_perdido').style.display = 'none';
+    document.querySelector('.search').style.display = 'none';
     
-    // Mostra o card de detalhes desejado
     document.getElementById(idCardInfo).classList.add('ativa-info');
 }
 
-// Como no HTML os onclicks de voltar e ver detalhes estavam vazios (onclick=""), 
-// nós os preenchemos dinamicamente via JS assim que a página carrega:
+/* =========================================
+   INICIALIZAÇÃO QUANDO A PÁGINA CARREGA
+========================================= */
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Configura o botão "Inicio" do Header
-    const botoesHeader = document.querySelectorAll('.rightside button');
-    if(botoesHeader.length > 0) {
-        botoesHeader[0].onclick = irParaInicio; // O primeiro botão é o "Inicio"
-    }
-
-    // Pega todos os botões "Ver informação" da tela de anúncio
-    const botoesVerInfo = document.querySelectorAll('#tela-anuncio main .container > section:not(.animais) button');
-    
-    if(botoesVerInfo.length >= 2) {
-        // O primeiro card é o gato Mel
-        botoesVerInfo[0].onclick = function() {
-            abrirDetalhesAnimal('info-gato');
-        };
-        
-        // O segundo card é o cachorro Bitelo (Perdido)
-        botoesVerInfo[1].onclick = function() {
-            abrirDetalhesAnimal('info-dog');
-        };
-    }
-    
-    // Evita que o form recarregue a página ao clicar em botões dentro do cadastro
-    const botoesForm = document.querySelectorAll('#tela-cadastro_pet button');
-    botoesForm.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault(); // Impede o envio real do formulário para testes
+    // 1. Bloqueia o "refresh" da página ao clicar nos botões de formulário
+    const formularios = document.querySelectorAll('form');
+    formularios.forEach(form => {
+        form.addEventListener('submit', (evento) => {
+            evento.preventDefault(); 
+            console.log("Formulário protegido de refresh.");
         });
     });
+
+    // 2. Preenche dinamicamente os onclicks vazios do HTML
+    
+    // Botão 'Inicio' no menu superior
+    const btnInicio = document.querySelector('.rightside button:nth-child(1)');
+    if(btnInicio) {
+        btnInicio.onclick = irParaInicio;
+    }
+
+    // Botões de "Ver informação" nos cards de pet
+    const btnVerGato = document.querySelector('#tela-anuncio_adocao button');
+    if(btnVerGato) {
+        btnVerGato.onclick = function() { abrirDetalhesAnimal('info-gato'); };
+    }
+
+    const btnVerCachorro = document.querySelector('#tela-anuncio_perdido button');
+    if(btnVerCachorro) {
+        btnVerCachorro.onclick = function() { abrirDetalhesAnimal('info-dog'); };
+    }
 });
