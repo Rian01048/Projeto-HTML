@@ -1,0 +1,449 @@
+/* ===== RESET E ESTILOS BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* ===== CONTROLE DE TELAS PRINCIPAIS ===== */
+body > section {
+    display: none;
+}
+
+body > section.ativa {
+    display: block;
+}
+
+/* ===== CABEÇALHO PRINCIPAL ===== */
+body > header {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.leftside li {
+    list-style: none;
+}
+
+.leftside a {
+    text-decoration: none;
+    color: #2E7D32;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.leftside a:hover {
+    color: #1B5E20;
+}
+
+/* ===== CABEÇALHO DO MENU ===== */
+.menu {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #2E7D32;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.rightside button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    margin-left: 15px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.rightside button:hover {
+    color: #2E7D32;
+}
+
+/* ===== TELA INÍCIO (#tela-inicio) ===== */
+#tela-inicio main {
+    padding: 50px 20px;
+}
+
+#tela-inicio main .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+}
+
+#tela-inicio main .logo img {
+    width: 80px;
+    height: 80px;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    color: #2E7D32;
+}
+
+.description p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.btn button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+}
+
+.btn button:nth-child(1) {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    border-color: #A5D6A7;
+}
+
+.btn button:nth-child(2) {
+    background-color: #FFEBEE;
+    color: #C62828;
+    border-color: #EF9A9A;
+}
+
+.btn button:nth-child(3) {
+    background-color: #E3F2FD;
+    color: #1565C0;
+    border-color: #90CAF9;
+}
+
+/* ===== TELA DE ANÚNCIOS (#tela-anuncio) ===== */
+#tela-anuncio main {
+    padding: 30px 20px;
+}
+
+#tela-anuncio main > .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+}
+
+#tela-anuncio > main > .container > .title h2 {
+    color: #333;
+    font-size: 1.8rem;
+}
+
+/* Barra de Pesquisa */
+.search input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.search input:focus {
+    border-color: #2E7D32;
+}
+
+/* Cards de Anúncios */
+#tela-anuncio .container > section:not(.animais) {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: box-shadow 0.3s;
+}
+
+#tela-anuncio .container > section:not(.animais):hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.nome h2 {
+    font-size: 1.4rem;
+    color: #2E7D32;
+}
+
+.type p {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.bairro {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #555;
+}
+
+.bairro p {
+    margin: 0;
+}
+
+#tela-anuncio .container > section:not(.animais) button {
+    margin-left: auto;
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#tela-anuncio .container > section:not(.animais) button:hover {
+    background-color: #1B5E20;
+}
+
+/* ===== TELAS DE DETALHES DO ANIMAL (.animais) ===== */
+.animais {
+    display: none;
+}
+
+#tela-anuncio.modo-detalhes > main > .container > .title,
+#tela-anuncio.modo-detalhes .search,
+#tela-anuncio.modo-detalhes > main > .container > section:not(.animais) {
+    display: none !important;
+}
+
+#tela-anuncio.modo-detalhes .animais.ativa-detalhe {
+    display: block;
+}
+
+.animais .container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.animais .title h1 {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    border-bottom: 2px solid #E8F5E9;
+    padding-bottom: 10px;
+}
+
+.animais .photo img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.animais .name h1 {
+    font-size: 2rem;
+    color: #C62828;
+}
+
+.animais .category {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 15px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.animais .category p:nth-child(odd) {
+    font-weight: bold;
+    color: #555;
+}
+
+.animais .category p:nth-child(even) {
+    color: #2E7D32;
+    font-weight: 600;
+}
+
+.btn-contact button {
+    width: 100%;
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-contact button:hover {
+    background-color: #1B5E20;
+}
+
+/* ===== TELA DE CADASTRO (#tela-cadastro_pet) ===== */
+.cadastro main {
+    padding: 40px 20px;
+}
+
+.formulario-box {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.formulario-box .title h2 {
+    color: #2E7D32;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.formulario-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formulario-box label {
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.formulario-box input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.formulario-box input:focus {
+    border-color: #2E7D32;
+}
+
+.btn-animal, .btn-situacao {
+    display: flex;
+    gap: 10px;
+    margin: 5px 0 10px 0;
+}
+
+.btn-animal button, .btn-situacao button {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-animal button.selecionado, .btn-situacao button.selecionado {
+    background-color: #E8F5E9;
+    border-color: #2E7D32;
+    color: #2E7D32;
+}
+
+.formulario-box form > button {
+    margin-top: 15px;
+    padding: 14px;
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.formulario-box form > button:hover {
+    background-color: #1B5E20;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    #tela-anuncio .container > section:not(.animais) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #tela-anuncio .container > section:not(.animais) button {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .formulario-box {
+        padding: 20px;
+    }
+}
