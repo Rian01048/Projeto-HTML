@@ -80,6 +80,10 @@ nav .rightside button:hover {
     display: block;
 }
 
+section {
+    display: none;
+}
+
 /* ================= SEÇÕES (TELAS) ================= */
 section.tela, 
 section.pagina {
@@ -463,6 +467,7 @@ section main .container a:hover {
 }
 
 /* Estilos de Detalhe */
+
 .animais .photo img {
     width: 100%;
     max-width: 450px;
@@ -477,8 +482,6 @@ section main .container a:hover {
     margin-bottom: 20px;
     text-transform: uppercase;
 }
-
-/* Grid para alinhar perfeitamente os parágrafos de categorias soltos no HTML */
 .animais .category {
     display: grid;
     grid-template-columns: 80px 1fr; /* Coluna das "labels" menor, valores tomam o resto */
