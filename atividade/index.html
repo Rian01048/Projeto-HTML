@@ -10,45 +10,57 @@
 </head>
 <body>
 
-        <header class="menu">
-            <div class="container">
-                <div class="logo">
-                    <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
-                    <h2>CenterPets</h2>
-                </div>
-    
-                <nav>
-                    <div class="rightside">
-                        <button onclick="">Inicio</button>
-                        <button onclick="queroAdotar()">Anúncio</button>
-                        <button onclick="Login()">Login</button>
-                        <button onclick="Cadastro()">Cadastro</button>
-                    </div>
-                </nav>
+    <header class="menu">
+        <div class="container">
+            <div class="logo">
+                <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+                <h2>CenterPets</h2>
             </div>
-        </header>
+    
+            <nav>
+                <div class="rightside">
+                    <button onclick="mudarTela('tela-inicio')">Inicio</button>
+                    <button onclick="mudarTela('tela-anuncio_adocao')">Anúncio</button>
+                    <button onclick="mudarTela('tela-login')">Login</button>
+                    <button onclick="mudarTela('tela-cadastro')">Cadastro</button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
 
-    <section id="tela-login" class="login">
+    <section id="tela-login" class="tela">
             <main>
+                <div class="leftside">
+                    <div class="logo">
+                        <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+                    </div>
+                    <div class="photo">
+                        <img src="https://png.pngtree.com/png-vector/20250325/ourmid/pngtree-domestic-animal-collection-dog-cat-parrot-rabbit-png-image_15864022.png" alt="">
+                    </div>
+                </div>
                 <div class="container">
                     <form>
                         <div class="title">
                             <h1>Login</h1>
                         </div>
-                        <label for="logar">Digite o seu login</label>
-                        <input type="text" id="logar">
+                        <div class="description">
+                            <p>Entre na sua conta para continuar</p>
+                        </div>
+                        <label for="logar">Email</label>
+                        <input type="text" id="logar" placeholder="Digite seu email">
 
-                        <label for="senha">Digite a sua senha</label>
-                        <input type="number" id="senha">
+                        <label for="senha">Senha</label>
+                        <input type="number" id="senha" placeholder="Digite sua senha">
 
                         <button>Entrar</button>
                     </form>
+                    <a href="">Esqueci minha senha</a>
                 </div>
             </main>
     </section>
 
-    <section id="tela-cadastro" class="cadastro">
+    <section id="tela-cadastro" class="tela">
             <main>
                 <div class="container">
                     <form>
@@ -85,16 +97,16 @@
                 </div>
     
                 <div class="btn">
-                    <button onclick="queroAdotar()">Quero adotar</button>
-                    <button onclick="animaisPerdidos()">Animais perdidos</button>
-                    <button onclick="publicarAnimal()">Publicar animal</button>
+                    <button onclick="queroAdotar('tela-anuncio_adocao')">Quero adotar</button>
+                    <button onclick="animaisPerdidos('tela-anuncio_perdido')">Animais perdidos</button>
+                    <button onclick="publicarAnimal('tela-cadastro_pet')">Publicar animal</button>
                 </div>
             </div>
         </main>
 
     </section>
 
-    <section id="tela-anuncio" class="anuncio">
+    <section id="tela-anuncio" class="tela">
         <main>
             <div class="container">
                 <div class="title">
@@ -258,7 +270,7 @@
         </main>
     </section>
 
-    <section id="tela-cadastro_pet" class="cadastro">
+    <section id="tela-cadastro_pet" class="tela">
         <main>
             <div class="container">
                 <div class="formulario-box">

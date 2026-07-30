@@ -1,371 +1,657 @@
-/* =========================================
-   1. GLOBAIS E RESET
-   ========================================= */
+/* Importando fonte moderna e limpa */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ================= RESET BÁSICO ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: #f9fbfd;
+    background-color: #f4f6f5; /* Fundo cinza/esverdeado claro */
     color: #333;
-    padding-left: 250px; 
 }
 
-/* Controle de exibição das telas principais */
-body > section { 
-    display: none; 
-    padding: 40px; 
-    min-height: 100vh; 
-}
-
-body > section.ativa { 
-    display: block; 
-}
-
-button { 
-    outline: none; 
-    cursor: pointer;
-}
-
-/* =========================================
-   2. MENU LATERAL (HEADER)
-   ========================================= */
+/* ================= HEADER (MENU) ================= */
 header.menu {
+    background-color: #ffffff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: #ffffff;
-    border-right: 1px solid #eef0f2;
-    padding: 30px 20px;
-    z-index: 100;
+    z-index: 999;
+}
+
+header.menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 5%;
 }
 
 header.menu .logo {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
-    color: #2e7d32;
+    gap: 12px;
 }
 
-header.menu .logo img { 
-    width: 60px; 
-    margin-bottom: 10px; 
+header.menu .logo img {
+    height: 35px;
 }
 
-header.menu nav .rightside {
+header.menu .logo h2 {
+    color: #2E7D32; /* Verde padrão */
+    font-size: 22px;
+    font-weight: 700;
+}
+
+nav .rightside {
     display: flex;
-    flex-direction: column;
     gap: 15px;
 }
 
-header.menu nav button {
+nav .rightside button {
     background: transparent;
     border: none;
-    text-align: left;
-    padding: 12px 15px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     color: #555;
-    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
     transition: 0.3s ease;
 }
 
-header.menu nav button:hover { 
-    background-color: #e8f5e9; 
-    color: #2e7d32; 
+nav .rightside button:hover {
+    background-color: #e8f5e9;
+    color: #2E7D32;
 }
 
-/* =========================================
-   3. TELA: INÍCIO
-   ========================================= */
-#tela-inicio main .container {
+.tela {
+    display: none;
+}
+
+.tela.active {
+    display: block;
+}
+
+/* ================= SEÇÕES (TELAS) ================= */
+section.tela, 
+section.pagina {
+    display: none; /* Oculta todas as telas por padrão via CSS */
+    min-height: 100vh;
+    padding-top: 80px; /* Compensar o header fixo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* O JS usará essa classe para mostrar a tela atual */
+section.ativa {
+    display: flex;
+}
+
+/* ================= LAYOUT DOS CARDS (MAIN) ================= */
+section main {
+    background-color: #ffffff;
+    width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    overflow: hidden;
+}
+
+/* Tela de login é mais larga pois tem dois lados */
+#tela-login main {
+    max-width: 900px;
+}
+
+/* Tela de cadastro e publicação são menores e centralizadas, pois só tem um lado */
+#tela-cadastro main,
+#tela-cadastro_pet main {
+    max-width: 450px;
+}
+
+/* ================= LADO ESQUERDO (Apenas Login) ================= */
+.leftside {
+    background-color: #f9fbf9;
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #eaeaea;
+}
+
+.leftside .logo {
+    margin-bottom: 20px;
+}
+
+.leftside .logo img {
+    height: 50px;
+}
+
+.leftside .photo img {
+    width: 100%;
+    max-width: 280px;
+    object-fit: contain;
+}
+
+/* ================= FORMULÁRIOS ================= */
+section main .container {
+    padding: 50px 40px;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Apenas na tela de login o container divide espaço com a imagem */
+#tela-login main .container {
+    width: 50%;
+}
+
+.title h1 {
+    font-size: 26px;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+.description p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    margin-top: 15px; /* Dá um respiro entre os inputs */
+}
+
+form label:first-of-type {
+    margin-top: 0;
+}
+
+form input {
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    border-color: #2E7D32;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+form button {
+    background-color: #388E3C;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+form button:hover {
+    background-color: #2E7D32;
+}
+
+section main .container a {
+    color: #388E3C;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+
+section main .container a:hover {
+    text-decoration: underline;
+}
+
+/* ================= TELA INÍCIO ================= */
+#tela-inicio main {
+    max-width: 650px; /* Deixa o container mais centralizado e estreito */
+    padding: 60px 20px;
+    margin: 0 auto;
+}
+
+#tela-inicio .container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#tela-inicio .logo img {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+#tela-inicio .title h1 {
+    color: #2E7D32; /* Verde idêntico ao da imagem */
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#tela-inicio .description p {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 40px;
     text-align: center;
-    margin-top: 80px;
 }
 
-#tela-inicio .logo img { 
-    width: 80px; 
-    margin-bottom: 15px; 
-}
-
-#tela-inicio .title h1 { 
-    color: #2e7d32; 
-    font-size: 3rem; 
-    margin-bottom: 10px; 
-}
-
-#tela-inicio .description p { 
-    color: #777; 
-    margin-bottom: 50px; 
-    font-size: 1.1rem; 
-}
-
-/* Botões da tela inicial */
+/* Container dos botões */
 #tela-inicio .btn {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px; /* Espaço entre os botões */
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
 }
 
+/* Resetando o estilo global de botão apenas para esta tela */
 #tela-inicio .btn button {
-    padding: 16px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background: #fff;
-    transition: 0.2s;
-}
-
-#tela-inicio .btn button:nth-child(1) { border: 2px solid #a5d6a7; color: #2e7d32; background: #f1f8e9; }
-#tela-inicio .btn button:nth-child(2) { border: 2px solid #ef9a9a; color: #d32f2f; background: #ffebee; }
-#tela-inicio .btn button:nth-child(3) { border: 2px solid #90caf9; color: #1976d2; background: #e3f2fd; }
-
-/* =========================================
-   4. TELA: LISTA DE ANÚNCIOS
-   ========================================= */
-#tela-anuncio .title h2 { 
-    margin-bottom: 20px; 
-    font-size: 1.8rem; 
-}
-
-#tela-anuncio .search input {
     width: 100%;
-    max-width: 600px;
-    padding: 12px 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    font-size: 1rem;
-}
-
-/* Cards da Listagem (Grid) */
-#tela-anuncio_adocao, #tela-anuncio_perdido {
-    display: grid;
-    grid-template-columns: 80px 1fr 1fr 1fr 150px;
-    align-items: center;
-    gap: 15px;
-    background: #fff;
-    padding: 15px;
+    padding: 16px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0; 
 }
 
-#tela-anuncio_adocao { border-left: 5px solid #4CAF50; }
-#tela-anuncio_perdido { border-left: 5px solid #F44336; }
-
-/* Separador entre itens da mesma lista */
-#tela-anuncio_adocao > *:nth-child(1),
-#tela-anuncio_adocao > *:nth-child(2),
-#tela-anuncio_adocao > *:nth-child(3),
-#tela-anuncio_adocao > *:nth-child(4),
-#tela-anuncio_adocao > *:nth-child(5) {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
+/* ================= CORES DOS BOTÕES DA HOME ================= */
+/* 1º Botão: Quero adotar (Borda Verde) */
+#tela-inicio .btn button:nth-child(1) {
+    background-color: #ffffff;
+    border: 2px solid #dcedc8;
+    color: #388E3C;
+}
+#tela-inicio .btn button:nth-child(1):hover {
+    background-color: #f1f8e9;
+    border-color: #388E3C;
 }
 
-/* Textos e Imagens da Listagem */
-#tela-anuncio .photo img { 
-    width: 80px; 
-    height: 80px; 
-    border-radius: 8px; 
-    object-fit: cover; 
+/* 2º Botão: Animais perdidos (Fundo/Borda Vermelha Claro) */
+#tela-inicio .btn button:nth-child(2) {
+    background-color: #ffebee;
+    border: 2px solid #ffcdd2;
+    color: #d32f2f;
+}
+#tela-inicio .btn button:nth-child(2):hover {
+    background-color: #ffcdd2;
+    border-color: #ef5350;
 }
 
-#tela-anuncio .nome h2 { font-size: 1.2rem; color: #333; }
-#tela-anuncio_perdido .nome h2 { color: #F44336; }
-#tela-anuncio .type, #tela-anuncio .bairro { display: flex; gap: 5px; font-size: 0.95rem; color: #555; }
+/* 3º Botão: Publicar animal (Fundo/Borda Azul Claro) */
+#tela-inicio .btn button:nth-child(3) {
+    background-color: #e3f2fd;
+    border: 2px solid #bbdefb;
+    color: #1976d2;
+}
+#tela-inicio .btn button:nth-child(3):hover {
+    background-color: #bbdefb;
+    border-color: #42a5f5;
+}
+
+/* ================= TELA DE ANÚNCIOS (LISTAGEM) ================= */
+#tela-anuncio main {
+    max-width: 900px; /* Mais largo para acomodar bem as listas */
+    padding: 0; 
+    margin: 0 auto;
+}
+
+#tela-anuncio .title h2, 
+#tela-anuncio .title h1 {
+    color: #2E7D32;
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Barra de Busca */
+.search {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.search input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    background-color: #f9fbf9;
+    transition: 0.3s ease;
+}
+
+.search input:focus {
+    border-color: #388E3C;
+    background-color: #ffffff;
+}
+
+/* Estrutura Flat (Sem Divs Pai) - Separando os itens visualmente */
+#tela-anuncio_adocao, 
+#tela-anuncio_perdido {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+/* Dá um espaço e uma linha no topo de cada nova foto para simular um novo "card" */
+#tela-anuncio_adocao .photo, 
+#tela-anuncio_perdido .photo {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px dashed #eaeaea;
+}
+
+/* Remove a linha do primeiro item da lista */
+#tela-anuncio_adocao .photo:first-of-type,
+#tela-anuncio_perdido .photo:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+#tela-anuncio_adocao .photo img,
+#tela-anuncio_perdido .photo img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#tela-anuncio_adocao .nome h2,
+#tela-anuncio_perdido .nome h2 {
+    font-size: 20px;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+#tela-anuncio_adocao .type, 
+#tela-anuncio_adocao .bairro,
+#tela-anuncio_perdido .type, 
+#tela-anuncio_perdido .bairro {
+    display: flex;
+    gap: 5px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#tela-anuncio_adocao .type strong, 
+#tela-anuncio_adocao .bairro strong,
+#tela-anuncio_perdido .type strong, 
+#tela-anuncio_perdido .bairro strong {
+    color: #333;
+}
 
 /* Botões da Listagem */
-#tela-anuncio button {
-    background: #4CAF50; 
-    color: white; 
-    border: none; 
-    padding: 10px;
-    border-radius: 6px; 
-    font-weight: bold; 
-    transition: 0.2s;
-}
-
-#tela-anuncio_perdido button { background: #F44336; }
-#tela-anuncio button:hover { opacity: 0.9; }
-
-/* =========================================
-   5. TELA: DETALHES DO ANIMAL
-   ========================================= */
-/* Oculta detalhes inicialmente */
-.animais, #info-dog-comum, #info-dog-premium { 
-    display: none; 
-}
-
-/* Container de Detalhes */
-.animais .container, #info-dog-premium {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-
-.animais .title, #info-dog-premium .title { 
-    clear: both; 
-    margin-bottom: 20px; 
-    border-bottom: 1px solid #eee; 
-    padding-bottom: 10px; 
-}
-
-.animais .photo, #info-dog-premium .photo { 
-    float: left; 
-    width: 350px; 
-    margin-right: 30px; 
-    margin-bottom: 20px; 
-}
-
-.animais .photo img, #info-dog-premium .photo img { 
-    width: 100%; 
-    height: 350px; 
-    border-radius: 12px; 
-    object-fit: cover; 
-}
-
-/* Textos de Detalhes */
-.animais .name h1, #info-dog-premium .name h1 { 
-    font-size: 2.5rem; 
-    margin-bottom: 20px; 
-    text-transform: uppercase; 
-}
-#info-dog-comum .name h1, #info-dog-premium .name h1 { color: #F44336; }
-
-.animais .category, #info-dog-premium .category {
-    display: grid; 
-    grid-template-columns: 100px 1fr; 
-    gap: 10px; 
-    margin-bottom: 25px; 
-    font-size: 1.1rem;
-}
-.animais .category p:nth-child(odd), #info-dog-premium .category p:nth-child(odd) { 
-    font-weight: bold; color: #666; 
-}
-
-#info-dog-premium .price strong { 
-    font-size: 1.8rem; 
-    color: #2e7d32; 
-    display: block; 
-    margin-bottom: 20px; 
-}
-
-/* Botões Internos (Contato, Excluir, Editar) */
-.animais .btn-contact button, #info-dog-premium .btn-contact button {
-    background: #2e7d32; 
-    color: #fff; 
-    border: none; 
-    padding: 12px 30px;
-    border-radius: 8px; 
-    font-size: 1.1rem; 
-    font-weight: bold; 
-    margin-bottom: 15px; 
-}
-
-.animais .btn-excluir_editar, #info-dog-premium .btn-excluir_editar { 
-    display: flex; gap: 10px; 
-}
-
-.animais .btn-excluir_editar button, #info-dog-premium .btn-excluir_editar button {
-    padding: 10px 20px; 
-    border: 1px solid #ccc; 
-    background: #f9f9f9; 
-    border-radius: 6px; 
-}
-
-/* Botão de Voltar Dinâmico */
-.btn-voltar {
-    background-color: #f1f3f5 !important;
-    border: 1px solid #ddd !important;
-    padding: 10px 15px !important;
-    border-radius: 6px;
+#tela-anuncio_adocao button, 
+#tela-anuncio_perdido button {
+    background-color: #388E3C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
     font-weight: 600;
-    margin-bottom: 20px;
-    display: inline-block;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 15px;
+    transition: 0.3s ease;
 }
 
-/* Mágica de Navegação: Transição Lista -> Detalhes */
-#tela-anuncio.show-info > main > .container > .title,
-#tela-anuncio.show-info .search,
-#tela-anuncio.show-info #tela-anuncio_adocao,
-#tela-anuncio.show-info #tela-anuncio_perdido {
+/* Botão vermelho para animais perdidos */
+#tela-anuncio_perdido button {
+    background-color: #d32f2f;
+}
+
+#tela-anuncio_adocao button:hover { background-color: #2E7D32; }
+#tela-anuncio_perdido button:hover { background-color: #b71c1c; }
+
+/* ================= TELA DE INFORMAÇÕES (DETALHES DO PET) ================= */
+
+/* Por padrão, as telas de detalhes ficam invisíveis */
+.animais, 
+#info-dog-comum, 
+#info-dog-premium {
     display: none;
 }
 
-/* =========================================
-   6. FORMULÁRIOS (LOGIN, CADASTRO, PUBLICAR)
-   ========================================= */
-.login .container, .cadastro .container {
-    background: #fff; 
-    padding: 40px; 
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-    max-width: 500px; 
-    margin: 40px auto;
+/* Classes para ativar os detalhes via JavaScript */
+.animais.active-detail,
+#info-dog-comum.active-detail, 
+#info-dog-premium.active-detail {
+    display: block;
 }
 
-form { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
+/* Quando uma tela de detalhes está ativa, escondemos a listagem e a busca */
+.hide-list #tela-anuncio_adocao,
+.hide-list #tela-anuncio_perdido,
+.hide-list .search,
+.hide-list > .title {
+    display: none !important;
 }
 
-form label { 
-    font-weight: 600; 
-    color: #555; 
-    margin-top: 10px; 
+/* Estilos de Detalhe */
+.animais .photo img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 25px;
 }
 
-form input { 
-    padding: 12px; 
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    font-size: 1rem; 
+.animais .name h1 {
+    font-size: 32px;
+    color: #d32f2f; 
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-/* Botões do formulário de Publicar */
-.btn-animal, .btn-situacao { 
-    display: flex; gap: 10px; margin-bottom: 10px; 
+/* Grid para alinhar perfeitamente os parágrafos de categorias soltos no HTML */
+.animais .category {
+    display: grid;
+    grid-template-columns: 80px 1fr; /* Coluna das "labels" menor, valores tomam o resto */
+    gap: 12px 10px;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: #555;
+    align-items: center;
 }
 
-.btn-animal button, .btn-situacao button {
-    flex: 1; 
-    padding: 12px; 
-    background: #fff; 
-    border: 1px solid #ddd;
-    border-radius: 8px; 
-    font-weight: 600; 
-    color: #555; 
-    transition: 0.2s;
+.animais .category p:nth-child(odd) {
+    font-weight: 700;
+    color: #222;
 }
 
-.btn-animal button:hover, .btn-situacao button:hover { 
-    border-color: #2e7d32; color: #2e7d32; 
+.animais .price {
+    margin-bottom: 30px;
 }
 
-form > button:last-child {
-    background: #2e7d32; 
-    color: #fff; 
-    border: none; 
-    padding: 15px;
-    border-radius: 8px; 
-    font-size: 1.1rem; 
-    font-weight: bold; 
-    margin-top: 20px;
+.animais .price h1 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.animais .price strong {
+    font-size: 28px;
+    color: #2E7D32;
+}
+
+.btn-contact button {
+    background-color: #388E3C;
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    max-width: 450px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn-contact button:hover {
+    background-color: #2E7D32;
+}
+
+.btn-excluir_editar {
+    display: flex;
+    gap: 10px;
+    max-width: 450px;
+}
+
+.btn-excluir_editar button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.btn-excluir_editar button:nth-child(1) {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+.btn-excluir_editar button:nth-child(1):hover {
+    background-color: #ffcdd2;
+}
+
+.btn-excluir_editar button:nth-child(2) {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+.btn-excluir_editar button:nth-child(2):hover {
+    background-color: #bbdefb;
+}
+
+/* ================= TELA DE PUBLICAR ANIMAL ================= */
+
+#tela-cadastro_pet .formulario-box {
+    width: 100%;
+}
+
+#tela-cadastro_pet .title h2 {
+    font-size: 22px;
+    color: #111;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+/* ================= GRUPOS DE BOTÕES (Espécie e Situação) ================= */
+.btn-animal, 
+.btn-situacao {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* Resetando o estilo do botão padrão do form para estes botões específicos */
+.btn-animal button, 
+.btn-situacao button {
+    flex: 1; /* Faz os botões dividirem o espaço igualmente (50/50) */
+    background-color: #ffffff;
+    border: 2px solid #eaeaea;
+    color: #666;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0;
+    transition: all 0.3s ease;
+}
+
+.btn-animal button:hover, 
+.btn-situacao button:hover {
+    border-color: #ccc;
+    background-color: #f9fbf9;
+}
+
+/* ================= ESTADOS "SELECIONADOS" (Adicionados via JS) ================= */
+/* Botões de Espécie selecionados (Verde) */
+.btn-animal button.selected {
+    border-color: #388E3C;
+    background-color: #e8f5e9;
+    color: #2E7D32;
+}
+
+/* 1º Botão de Situação selecionado (Para adoção -> Verde) */
+.btn-situacao button:nth-child(1).selected {
+    border-color: #388E3C;
+    background-color: #e8f5e9;
+    color: #2E7D32;
+}
+
+/* 2º Botão de Situação selecionado (Perdido -> Vermelho) */
+.btn-situacao button:nth-child(2).selected {
+    border-color: #d32f2f;
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+/* Botão final de Publicar */
+#tela-cadastro_pet form > button:last-of-type {
+    margin-top: 35px;
+    width: 100%;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 768px) {
+    section main {
+        flex-direction: column;
+    }
+    
+    .leftside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eaeaea;
+        padding: 30px 20px;
+    }
+
+    section main .container {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    #tela-login main .container {
+        width: 100%; /* No mobile o login ocupa tudo */
+    }
 }
