@@ -98,6 +98,18 @@ header.menu {
     min-height: 80vh;
 }
 
+#tela-login {
+    background-color: #2d8038a6;
+}
+#tela-cadastro {
+    background-color: #2d8038a6;
+}
+
+#tela-inicio {
+    background-color: #2d8038a6;
+}
+
+
 .leftside {
     flex: 1;
     text-align: center;
@@ -209,6 +221,8 @@ form button:hover {
     min-height: 80vh;
 }
 
+
+
 #tela-inicio .container {
     background-color: #FFFFFF;
     padding: 50px;
@@ -250,6 +264,10 @@ form button:hover {
 #tela-anuncio .container {
     max-width: 900px;
     margin: 0 auto;
+}
+
+#tela-anuncio {
+    background-color: #508052;
 }
 
 #tela-anuncio .title h2 {
@@ -302,6 +320,20 @@ form button:hover {
     cursor: pointer;
     transition: 0.3s;
 }
+
+
+
+#info-gato {
+    background-color: #508052;
+}
+#info-dog-comum {
+    background-color: #508052;
+}
+#info-dog-premium {
+    background-color: #508052;
+}
+
+
 
 #tela-anuncio_perdido button { background-color: #C62828; }
 
