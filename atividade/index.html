@@ -62,22 +62,41 @@
 
     <section id="tela-cadastro" class="tela">
             <main>
+
+                <div class="leftside">
+                    <div class="logo">
+                        <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+                    </div>
+                    <div class="photo">
+                        <img src="https://png.pngtree.com/png-vector/20250325/ourmid/pngtree-domestic-animal-collection-dog-cat-parrot-rabbit-png-image_15864022.png" alt="">
+                    </div>
+                </div>
+
+
                 <div class="container">
                     <form>
                         <div class="title">
                             <h1>Cadastro</h1>
                         </div>
-                        <label for="cadastrar">Digite seu email</label>
-                        <input type="text" id="cadastrar">
 
-                        <label for="senha">Crie uma senha</label>
-                        <input type="number" id="senha">
+                        <label for="nome-completo">Nome Completo</label>
+                        <input type="text" id="nome-completo" placeholder="Digite seu nome completo">
 
-                        <label for="senha">Confirme sua senha</label>
-                        <input type="number" id="senha">
+                        <label for="cadastrar">Email</label>
+                        <input type="text" id="cadastrar" placeholder="Digite seu email">
+
+                        <label for="senha">Senha</label>
+                        <input type="number" id="senha" placeholder="Digite sua senha">
+
+                        <label for="numTel">Telefone (opcional)</label>
+                        <input type="tel" id="numTel" placeholder="(00) 00000-0000">
+
+                        <label for="senha">Confirmar senha</label>
+                        <input type="number" id="senha" placeholder="Confirme a sua senha">
 
                         <button>Entrar</button>
                     </form>
+                    <a href="">Esqueci minha senha</a>
                 </div>
             </main>
     </section>
@@ -201,7 +220,7 @@
                 </section>
 
                 <section id="info-dog" class="animais">
-                    <section id="info-dog-comum">
+                    <div id="info-dog-comum">
                         <div class="container">
                             <div class="title">
                                 <h1>INFORMAÇÕES DO ANIMAL</h1>
@@ -230,8 +249,9 @@
                                 <button>Excluir</button>
                                 <button>Editar</button>
                             </div>
-                    </section>
-                    <section id="info-dog-premium">
+                        </div>
+                    </div>
+                    <div id="info-dog-premium">
                         <div class="container">
                             <div class="title">
                                 <h1>INFORMAÇÕES DO ANIMAL</h1>
@@ -266,7 +286,7 @@
                                 <button>Editar</button>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </section>
             </div>
         </main>
