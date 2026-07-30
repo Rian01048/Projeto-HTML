@@ -12,11 +12,6 @@ function mudarTela(idDoAlvo) {
     }
 }
 
-// Atalhos diretos para os botões do seu HTML
-const queroAdotar = mudarTela;
-const animaisPerdidos = mudarTela;
-const publicarAnimal = mudarTela;
-
 // Configurações ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
     
