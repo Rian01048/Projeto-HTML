@@ -9,10 +9,6 @@ body{
     background:#f7f7f7;
 }
 
-
-/*hamburger*/
-
-
 .hamburger{
     position:fixed;
     top:20px;
@@ -115,10 +111,7 @@ body{
 
 
 
-/*Tela Principal*/
 
-
-/* toda "pagina" fica escondida até ganhar a classe .ativa */
 .pagina{
     display:none;
     background-color: #2e7d32;
@@ -342,7 +335,11 @@ body{
     gap:15px;
 }
 
-#tela-anuncio_adocao, #tela-anuncio_perdido h2 {
+#tela-anuncio_adocao h2 {
+    color: white;
+}
+
+#tela-anuncio_perdido h2 {
     color: white;
 }
 
