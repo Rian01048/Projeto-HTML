@@ -1,332 +1,322 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CenterPets</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="">
-    <script src="script.js"></script>
+    <link rel="icon" href="assets/favicon.svg">
 </head>
 <body>
 
-    <header class="menu">
-        <div class="container">
-            <div class="logo">
-                <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
-                <h2>CenterPets</h2>
-            </div>
-    
-            <nav>
-                <div class="rightside">
-                    <button onclick="mudarTela('tela-inicio')">Inicio</button>
-                    <button onclick="mudarTela('tela-login')">Login</button>
-                    <button onclick="mudarTela('tela-cadastro')">Cadastro</button>
-                </div>
-            </nav>
+
+    <button id="menu-btn" class="hamburger">
+        ☰
+    </button>
+
+    <div id="overgay"></div>
+
+    <nav id="menu" class="sidebar">
+        <div class="logo">
+        <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+            <h2>CenterPets</h2>
         </div>
-    </header>
 
+        <ul>
+            <li><a href="#" class="ativo" onclick="verInicio()">Início</a></li>
+            <li><a href="#" onclick="verLogin()">Login</a></li>
+            <li><a href="#" onclick="verCadastro()">Cadastro</a></li>
+        </ul>
+    </nav>
 
-    <section id="tela-login" class="tela">
-            <main>
-                <div class="leftside">
-                    <div class="logo">
-                        <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
-                    </div>
-                    <div class="photo">
-                        <img src="https://png.pngtree.com/png-vector/20250325/ourmid/pngtree-domestic-animal-collection-dog-cat-parrot-rabbit-png-image_15864022.png" alt="">
-                    </div>
-                </div>
-                <div class="container">
-                    <form>
-                        <div class="title">
-                            <h1>Login</h1>
-                        </div>
-                        <div class="description">
-                            <p>Entre na sua conta para continuar</p>
-                        </div>
-                        <label for="logar">Email</label>
-                        <input type="text" id="logar" placeholder="Digite seu email">
-
-                        <label for="senha">Senha</label>
-                        <input type="number" id="senha" placeholder="Digite sua senha">
-
-                        <button>Entrar</button>
-                    </form>
-                    <a href="">Esqueci minha senha</a>
-                </div>
-            </main>
-    </section>
-
-    <section id="tela-cadastro" class="tela">
-            <main>
-
-                <div class="leftside">
-                    <div class="logo">
-                        <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
-                    </div>
-                    <div class="photo">
-                        <img src="https://png.pngtree.com/png-vector/20250325/ourmid/pngtree-domestic-animal-collection-dog-cat-parrot-rabbit-png-image_15864022.png" alt="">
-                    </div>
-                </div>
-
-
-                <div class="container">
-                    <form>
-                        <div class="title">
-                            <h1>Cadastro</h1>
-                        </div>
-
-                        <label for="nome-completo">Nome Completo</label>
-                        <input type="text" id="nome-completo" placeholder="Digite seu nome completo">
-
-                        <label for="cadastrar">Email</label>
-                        <input type="text" id="cadastrar" placeholder="Digite seu email">
-
-                        <label for="senha">Senha</label>
-                        <input type="number" id="senha" placeholder="Digite sua senha">
-
-                        <label for="numTel">Telefone (opcional)</label>
-                        <input type="tel" id="numTel" placeholder="(00) 00000-0000">
-
-                        <label for="senha">Confirmar senha</label>
-                        <input type="number" id="senha" placeholder="Confirme a sua senha">
-
-                        <button>Entrar</button>
-                    </form>
-                    <a href="">Esqueci minha senha</a>
-                </div>
-            </main>
-    </section>
 
 
     <section id="tela-inicio" class="pagina ativa">
-        <main>
+        <main class="inicio">
             <div class="container">
                 <div class="logo">
                     <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
                 </div>
-                <div class="title">
-                    <h1>CenterPets</h1>
-                </div>
-                <div class="description">
-                    <p>Encontre um novo amigo ou ajude um pet a voltar pra casa</p>
-                </div>
-    
+                <h1>CenterPets</h1>
+                <p>
+                    Encontre um novo amigo ou ajude um pet a voltar pra casa.
+                </p>
                 <div class="btn">
-                    <button onclick="mudarTela('tela-anuncio_adocao')">Quero adotar</button>
-                    <button onclick="mudarTela('tela-anuncio_perdido')">Animais perdidos</button>
-                    <button onclick="mudarTela('tela-cadastro_pet')">Publicar animal</button>
+
+                    <button class="adotar" onclick="queroAdotar()">
+                        Quero adotar
+                    </button>
+
+                    <button class="perdidos" onclick="animaisPerdidos()">
+                        Animais perdidos
+                    </button>
+
+                    <button class="publicar" onclick="publicarAnimal()">
+                        Publicar animal
+                    </button>
                 </div>
-            </div>
-        </main>
-
-    </section>
-
-    <section id="tela-anuncio" class="tela">
-        <main>
-            <div class="container">
-                <div class="title">
-                    <h2>Anúncios</h2>
-                </div>
-                <div class="search">
-                    <label for="search-pets"></label>
-                    <input type="text" id="search-pets" placeholder="Buscar cidade ou bairro...">
-                </div>
-
-                <section id="tela-anuncio_adocao">
-                    <div class="photo">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/09/dia-mundial-dos-animais-topo.jpg" alt="">
-                    </div>
-                    <div class="nome">
-                        <h2>Mel</h2>
-                    </div>
-                    <div class="type">
-                        <strong>Tipo:</strong><p>Gato</p>
-                    </div>
-                    <div class="bairro">
-                        <strong>Bairro:</strong> <p>Cajazeiras</p>
-                    </div>
-
-                    <button onclick="mudarTela('info-gato')">Ver informação</button>
-
-                    <div class="photo">
-                        <img src="https://www.infoescola.com/wp-content/uploads/2010/08/husky-siberiano_71212480.jpg" alt="">
-                    </div>
-                    <div class="nome">
-                        <h2>Chinego</h2>
-                    </div>
-                    <div class="type">
-                        <strong>Tipo:</strong><p>Cachorro</p>
-                    </div>
-                    <div class="bairro">
-                        <strong>Bairro:</strong> <p>Barra</p>
-                    </div>
-
-                    <button onclick="mudarTela('info-dog-premium')">Ver informação</button>
-                </section>
-
-                <section id="tela-anuncio_perdido">
-                    <div class="photo">
-                        <img src="https://www.petz.com.br/blog/wp-content/uploads/2020/04/meu-primeiro-cachorro-pet.jpg" alt="">
-                    </div>
-                    <div class="nome">
-                        <h2>Bitelo</h2>
-                    </div>
-                    <div class="type">
-                        <strong>Tipo:</strong><p>Cachorro</p>
-                    </div>
-                    <div class="bairro">
-                        <strong>Bairro:</strong> <p>Piatã</p>
-                    </div>
-
-                    <button onclick="mudarTela('info-dog-comum')">Ver informação</button>
-                </section>
-
-                <section id="info-gato" class="animais">
-                    <div class="container">
-                        <div class="title">
-                            <h1>INFORMAÇÕES DO ANIMAL</h1>
-                        </div>
-
-                            <div class="photo">
-                                <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/09/dia-mundial-dos-animais-topo.jpg" alt="">
-                            </div>
-
-                            <div class="name">
-                                <h1>Mel</h1>
-                            </div>
-
-                            <div class="category">
-                                <p>Especie: </p> <p>Gato</p>
-                                <p>Situação: </p> <p>Para adoção</p>
-                                <p>Bairro: </p> <p>Cajazeiras</p>
-                                <p>Cidade: </p> <p>Salvador</p>
-                                <p>Contato: </p> <p>(71) 99999-9999</p>
-                            </div>
-
-                            <div class="btn-contact">
-                                <button onclick="">Entrar em contato</button>
-                            </div>
-
-                            <div class="btn-excluir_editar">
-                                <button>Excluir</button>
-                                <button>Editar</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="info-dog" class="animais">
-                    <div id="info-dog-comum">
-                        <div class="container">
-                            <div class="title">
-                                <h1>INFORMAÇÕES DO ANIMAL</h1>
-                            </div>
-    
-                            <div class="photo">
-                                <img src="https://www.petz.com.br/blog/wp-content/uploads/2020/04/meu-primeiro-cachorro-pet.jpg" alt="">
-                            </div>
-    
-                            <div class="name">
-                                <h1>Bitelo</h1>
-                            </div>
-    
-                            <div class="category">
-                                <p>Especie: </p> <p>Cachorro</p>
-                                <p>Situação: </p> <p>Perdido</p>
-                                <p>Bairro: </p> <p>Piatã</p>
-                                <p>Cidade: </p> <p>Salvador</p>
-                                <p>Contato: </p> <p>(71) 99999-9999</p>
-                            </div>
-    
-                            <div class="btn-contact">
-                                <button onclick="">Entrar em contato</button>
-                            </div>
-                            <div class="btn-excluir_editar">
-                                <button>Excluir</button>
-                                <button>Editar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="info-dog-premium">
-                        <div class="container">
-                            <div class="title">
-                                <h1>INFORMAÇÕES DO ANIMAL</h1>
-                            </div>
-    
-                            <div class="photo">
-                                <img src="https://www.infoescola.com/wp-content/uploads/2010/08/husky-siberiano_71212480.jpg" alt="">
-                            </div>
-    
-                            <div class="name">
-                                <h1>Chinego</h1>
-                            </div>
-    
-                            <div class="category">
-                                <p>Especie: </p> <p>Cachorro</p>
-                                <p>Situação: </p> <p>Adoção</p>
-                                <p>Bairro: </p> <p>Piatã</p>
-                                <p>Cidade: </p> <p>Salvador</p>
-                                <p>Contato: </p> <p>(71) 99999-9999</p>
-                            </div>
-    
-                            <div class="price">
-                                <h1>Valor para adoção</h1>
-                                <strong>R$200</strong>
-                            </div>
-    
-                            <div class="btn-contact">
-                                <button onclick="">Compre agora!!</button>
-                            </div>
-                            <div class="btn-excluir_editar">
-                                <button>Excluir</button>
-                                <button>Editar</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </main>
     </section>
 
-    <section id="tela-cadastro_pet" class="tela">
-        <main>
+
+
+    <section id="tela-login" class="pagina">
+        <main class="inicio">
             <div class="container">
-                <div class="formulario-box">
-                    <div class="title">
-                        <h2>PUBLICAR ANIMAL</h2>
-                    </div>
 
-                <form>
-                    <label for="nome">Nome (Opcional)</label>
-                    <input type="text" id="nome" placeholder="Digite o nome do animal">
+                <div class="logo">
+                    <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+                    <h2>CenterPets</h2>
+                </div>
 
-                    <div class="btn-animal">
-                        <button onclick="">🐶 Cachorro</button>
-                        <button onclick="">😺 Gato</button>
-                    </div>
+                <form class="card">
+                    <h1>Login</h1>
+                    <p class="descricao">Entre na sua conta para continuar</p>
 
-                    <div class="btn-situacao">
-                        <button onclick="">Para adoção</button>
-                        <button onclick="">Perdido</button>
-                    </div>
+                    <label for="loginEmail">E-mail</label>
+                    <input type="text" id="loginEmail" placeholder="Digite seu e-mail">
 
-                    <label for="bairro">Bairro</label>
-                    <input type="text" id="bairro" placeholder="Digite o bairro">
+                    <label for="loginSenha">Senha</label>
+                    <input type="password" id="loginSenha" placeholder="Digite sua senha">
 
-                    <label for="tel">Telefone</label>
-                    <input type="number" id="tel" placeholder="(00) 00000-0000">
+                    <a class="esqueci" href="#">Esqueci minha senha</a>
 
-                    <label for="cidade">Cidade</label>
-                    <input type="text" id="cidade" placeholder="Digite a cidade">
+                    <button type="submit">🐾 Entrar</button>
 
-                    <button onclick="">Publicar</button>
+                    <div class="divisor"><span>ou</span></div>
+
+                    <p class="rodape-form">Não tem uma conta? <a href="#" onclick="verCadastro()">Criar conta</a></p>
                 </form>
             </div>
         </main>
     </section>
 
-</body>
-</html>
+
+
+    <section id="tela-cadastro" class="pagina">
+        <main class="inicio">
+            <div class="container">
+                <div class="logo">
+                    <img src="https://static.vecteezy.com/system/resources/previews/009/385/339/non_2x/cat-paw-clipart-design-illustration-free-png.png" alt="">
+                    <h2>CenterPets</h2>
+                </div>
+
+                <form class="card">
+                    <h1>Cadastro de usuário</h1>
+                    <p class="descricao">Preencha os dados abaixo para criar sua conta</p>
+
+                    <label for="nomeCompleto">Nome completo</label>
+                    <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo">
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="cadastroEmail">E-mail</label>
+                            <input type="text" id="cadastroEmail" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="campo">
+                            <label for="numTel">Telefone (opcional)</label>
+                            <input type="tel" id="numTel" placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="cadastroSenha">Senha</label>
+                            <input type="password" id="cadastroSenha" placeholder="Digite sua senha">
+                        </div>
+                        <div class="campo">
+                            <label for="confirmarSenha">Confirmar senha</label>
+                            <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
+                        </div>
+                    </div>
+
+                    <button type="submit">🐾 Entrar</button>
+
+                    <div class="divisor"><span>ou</span></div>
+
+                    <p class="rodape-form">Já tem uma conta? <a href="#" onclick="verLogin()">Voltar para login</a></p>
+                </form>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="tela-anuncio_adocao" class="pagina">
+        <main class="inicio">
+            <div class="container lista">
+                <h2>Anúncios</h2>
+                <input type="text" class="busca" placeholder="Buscar cidade ou bairro...">
+
+                <div class="card-pet">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/09/dia-mundial-dos-animais-topo.jpg" alt="Mel">
+                    <div class="info-pet">
+                        <h3>Mel</h3>
+                        <p>Gato <span class="status adocao-texto">• Para adoção</span></p>
+                        <p class="bairro">Bairro: Cajazeiras</p>
+                    </div>
+                    <button class="ver-info adocao-btn" onclick="verMel()">Ver informações</button>
+                </div>
+
+                <div class="card-pet">
+                    <img src="https://www.infoescola.com/wp-content/uploads/2010/08/husky-siberiano_71212480.jpg" alt="Chinego">
+                    <div class="info-pet">
+                        <h3>Chinego</h3>
+                        <p>Cachorro <span class="status adocao-texto">• Para adoção</span></p>
+                        <p class="bairro">Bairro: Barra</p>
+                    </div>
+                    <button class="ver-info adocao-btn" onclick="verChinego()">Ver informações</button>
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="tela-anuncio_perdido" class="pagina">
+        <main class="inicio">
+            <div class="container lista">
+                <h2>Anúncios</h2>
+                <input type="text" class="busca" placeholder="Buscar cidade ou bairro...">
+                <div class="card-pet">
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2020/04/meu-primeiro-cachorro-pet.jpg" alt="Bitelo">
+                    <div class="info-pet">
+                        <h3>Bitelo</h3>
+                        <p class="status perdido-texto">Perdido</p>
+                        <p class="bairro">Bairro: Piatã</p>
+                    </div>
+                    <button class="ver-info perdido-btn" onclick="verBitelo()">Ver informações</button>
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="info-gato" class="pagina">
+        <main class="inicio">
+            <div class="container">
+                <div class="card info-animal">
+                    <h1>Informações do animal</h1>
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2021/09/dia-mundial-dos-animais-topo.jpg" alt="Mel">
+                    <h2 class="nome-animal adocao-texto">Mel</h2>
+
+                    <div class="dados">
+                        <p><strong>Espécie:</strong> Gato</p>
+                        <p><strong>Situação:</strong> <span class="adocao-texto">Para adoção</span></p>
+                        <p><strong>Bairro:</strong> Cajazeiras</p>
+                        <p><strong>Cidade:</strong> Salvador</p>
+                        <p><strong>Contato:</strong> (71) 99999-9999</p>
+                    </div>
+
+                    <button class="contato" onclick="">🐾 Entrar em contato</button>
+
+                    <div class="acoes">
+                        <button class="excluir">Excluir</button>
+                        <button class="editar">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="info-dog-comum" class="pagina">
+        <main class="inicio">
+            <div class="container">
+                <div class="card info-animal">
+                    <h1>Informações do animal</h1>
+                    <img src="https://www.petz.com.br/blog/wp-content/uploads/2020/04/meu-primeiro-cachorro-pet.jpg" alt="Bitelo">
+                    <h2 class="nome-animal perdido-texto">Bitelo</h2>
+
+                    <div class="dados">
+                        <p><strong>Espécie:</strong> Cachorro</p>
+                        <p><strong>Situação:</strong> <span class="perdido-texto">Perdido</span></p>
+                        <p><strong>Bairro:</strong> Piatã</p>
+                        <p><strong>Cidade:</strong> Salvador</p>
+                        <p><strong>Contato:</strong> (71) 99999-9999</p>
+                    </div>
+
+                    <button class="contato" onclick="">🐾 Entrar em contato</button>
+
+                    <div class="acoes">
+                        <button class="excluir">Excluir</button>
+                        <button class="editar">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="info-dog-premium" class="pagina">
+        <main class="inicio">
+            <div class="container">
+                <div class="card info-animal">
+                    <h1>Informações do animal</h1>
+                    <img src="https://www.infoescola.com/wp-content/uploads/2010/08/husky-siberiano_71212480.jpg" alt="Chinego">
+                    <h2 class="nome-animal adocao-texto">Chinego</h2>
+
+                    <div class="dados">
+                        <p><strong>Espécie:</strong> Cachorro</p>
+                        <p><strong>Situação:</strong> <span class="adocao-texto">Adoção</span></p>
+                        <p><strong>Bairro:</strong> Piatã</p>
+                        <p><strong>Cidade:</strong> Salvador</p>
+                        <p><strong>Contato:</strong> (71) 99999-9999</p>
+                    </div>
+
+                    <div class="preco">
+                        <p>Valor para adoção</p>
+                        <strong>R$ 200</strong>
+                    </div>
+
+                    <button class="contato" onclick="">Compre agora!!</button>
+
+                    <div class="acoes">
+                        <button class="excluir">Excluir</button>
+                        <button class="editar">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <section id="tela-cadastro_pet" class="pagina">
+        <main class="inicio">
+            <div class="container">
+                <form class="card">
+                    <h2>Publicar Animal</h2>
+
+                    <label for="nomeAnimal">Nome (opcional)</label>
+                    <input type="text" id="nomeAnimal" placeholder="Digite o nome do animal">
+
+                    <label>Espécie</label>
+                    <div class="opcoes">
+                        <button type="button" class="opcao" onclick="selecionarOpcao(this)">🐶 Cachorro</button>
+                        <button type="button" class="opcao" onclick="selecionarOpcao(this)">😺 Gato</button>
+                    </div>
+
+                    <label>Situação</label>
+                    <div class="opcoes">
+                        <button type="button" class="opcao" onclick="selecionarOpcao(this)">Para adoção</button>
+                        <button type="button" class="opcao" onclick="selecionarOpcao(this)">Perdido</button>
+                    </div>
+
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" placeholder="Digite o bairro">
+
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" placeholder="Digite a cidade">
+
+                    <label for="tel">Telefone</label>
+                    <input type="tel" id="tel" placeholder="(00) 00000-0000">
+
+                    <button type="submit" class="publicar-btn">🐾 Publicar</button>
+                </form>
+            </div>
+        </main>
+    </section>
+
+    <script src="script.js"></script>
+
+    </body>
+    </html>
