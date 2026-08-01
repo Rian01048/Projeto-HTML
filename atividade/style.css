@@ -114,7 +114,7 @@ body{
 
 .pagina{
     display:none;
-    background-color: #2e7d32;
+    background: linear-gradient(rgba(0, 128, 0, 0.438), rgba(255, 255, 255, 0.315));
 }
 
 .pagina.ativa{
