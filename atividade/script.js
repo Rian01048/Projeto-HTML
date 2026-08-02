@@ -87,3 +87,29 @@ function selecionarOpcao(botao){
 
     botao.classList.add("selecionado");
 }
+
+// Captura o elemento do modal
+const modalElement = document.getElementById("modalNotaFiscal");
+
+// Função chamada pelo botão "Compre agora!!"
+function Modal() {
+    modalElement.style.display = "flex"; 
+}
+
+// Função para fechar o modal no "X"
+function fecharModal() {
+    modalElement.style.display = "none";
+}
+
+// Fecha o modal caso o usuário clique fora da caixinha branca
+window.onclick = function(event) {
+    if (event.target == modalElement) {
+        fecharModal();
+    }
+}
+
+// Função simulando a confirmação do pagamento
+function confirmarCompra() {
+    alert("Pagamento de R$ 200,00 processado com sucesso! Obrigado por ajudar o Chinego e apoiar nossa plataforma.");
+    fecharModal();
+}

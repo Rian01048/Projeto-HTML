@@ -268,7 +268,7 @@
                         <strong>R$ 200</strong>
                     </div>
 
-                    <button class="contato" onclick="">Compre agora!!</button>
+                    <button class="contato" onclick="Modal()">Compre agora!!</button>
 
                     <div class="acoes">
                         <button class="excluir">Excluir</button>
@@ -278,6 +278,45 @@
             </div>
         </main>
     </section>
+
+    <div id="modalNotaFiscal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h2>Resumo da Transação</h2>
+            
+            <div class="dados-empresa">
+                <p><strong>Plataforma AdoteFácil</strong></p>
+                <p>Transparência em cada adoção</p>
+            </div>
+            
+            <hr class="linha-tracejada">
+            
+            <div class="nota-detalhes">
+                <div class="item-nota">
+                    <span>Valor base (Chinego)</span>
+                    <span>R$ 200,00</span>
+                </div>
+                <br>
+                <div class="item-nota repasse">
+                    <span>Repasse à Instituição (92%)</span>
+                    <span>R$ 184,00</span>
+                </div>
+                <div class="item-nota taxa">
+                    <span>Taxa da Plataforma (8%)</span>
+                    <span>R$ 16,00</span>
+                </div>
+            </div>
+            
+            <hr class="linha-tracejada">
+            
+            <div class="item-nota valor-final">
+                <span><strong>Total a Pagar</strong></span>
+                <span><strong>R$ 200,00</strong></span>
+            </div>
+            
+            <button class="btn-confirmar" onclick="confirmarCompra()">Confirmar Pagamento</button>
+        </div>
+    </div>
 
 
     <section id="tela-cadastro_pet" class="pagina">
