@@ -25,7 +25,7 @@ body{
 }
 
 
-#overgay{
+#overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.4);
@@ -53,7 +53,7 @@ body{
     left:0;
 }
 
-#overgay.active{
+#overlay.active{
     opacity:1;
     visibility:visible;
 }
