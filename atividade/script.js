@@ -1,6 +1,6 @@
 const menu = document.getElementById("menu");
 const btn = document.getElementById("menu-btn");
-const overlay = document.getElementById("overgay"); // id corrigido (era "overlay", mas no HTML é "overgay")
+const overlay = document.getElementById("overlay"); // id corrigido (era "overlay", mas no HTML é "overgay")
 
 btn.addEventListener("click", () => {
     menu.classList.toggle("active");
