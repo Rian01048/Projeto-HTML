@@ -23,9 +23,9 @@
         </div>
 
         <ul>
-            <li><a href="#" class="ativo" onclick="verInicio()">Início</a></li>
-            <li><a href="#" onclick="verLogin()">Login</a></li>
-            <li><a href="#" onclick="verCadastro()">Cadastro</a></li>
+            <li><a href="#" class="ativo" onclick="mudarPagina('tela-inicio')">Início</a></li>
+            <li><a href="#" onclick="mudarPagina('tela-login')">Login</a></li>
+            <li><a href="#" onclick="mudarPagina('tela-cadastro')">Cadastro</a></li>
         </ul>
     </nav>
 
@@ -43,15 +43,15 @@
                 </p>
                 <div class="btn">
 
-                    <button class="adotar" onclick="queroAdotar()">
+                    <button class="adotar" onclick="mudarPagina('tela-anuncio_adocao')">
                         Quero adotar
                     </button>
 
-                    <button class="perdidos" onclick="animaisPerdidos()">
+                    <button class="perdidos" onclick="mudarPagina('tela-anuncio_perdido')">
                         Animais perdidos
                     </button>
 
-                    <button class="publicar" onclick="publicarAnimal()">
+                    <button class="publicar" onclick="mudarPagina('tela-cadastro_pet')">
                         Publicar animal
                     </button>
                 </div>
@@ -86,7 +86,7 @@
 
                     <div class="divisor"><span>ou</span></div>
 
-                    <p class="rodape-form">Não tem uma conta? <a href="#" onclick="verCadastro()">Criar conta</a></p>
+                    <p class="rodape-form">Não tem uma conta? <a href="#" onclick="mudarPagina('tela-cadastro')">Criar conta</a></p>
                 </form>
             </div>
         </main>
@@ -135,7 +135,7 @@
 
                     <div class="divisor"><span>ou</span></div>
 
-                    <p class="rodape-form">Já tem uma conta? <a href="#" onclick="verLogin()">Voltar para login</a></p>
+                    <p class="rodape-form">Já tem uma conta? <a href="#" onclick="mudarPagina('tela-login')">Voltar para login</a></p>
                 </form>
             </div>
         </main>
@@ -155,7 +155,7 @@
                         <p>Gato <span class="status adocao-texto">• Para adoção</span></p>
                         <p class="bairro">Bairro: Cajazeiras</p>
                     </div>
-                    <button class="ver-info adocao-btn" onclick="verMel()">Ver informações</button>
+                    <button class="ver-info adocao-btn" onclick="mudarPagina('info-gato')">Ver informações</button>
                 </div>
 
                 <div class="card-pet">
@@ -165,7 +165,7 @@
                         <p>Cachorro <span class="status adocao-texto">• Para adoção</span></p>
                         <p class="bairro">Bairro: Barra</p>
                     </div>
-                    <button class="ver-info adocao-btn" onclick="verChinego()">Ver informações</button>
+                    <button class="ver-info adocao-btn" onclick="mudarPagina('info-dog-premium')">Ver informações</button>
                 </div>
             </div>
         </main>
@@ -184,7 +184,7 @@
                         <p class="status perdido-texto">Perdido</p>
                         <p class="bairro">Bairro: Piatã</p>
                     </div>
-                    <button class="ver-info perdido-btn" onclick="verBitelo()">Ver informações</button>
+                    <button class="ver-info perdido-btn" onclick="mudarPagina('info-dog-comum')">Ver informações</button>
                 </div>
             </div>
         </main>
