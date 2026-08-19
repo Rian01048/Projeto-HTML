@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+.input-group, .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group {
+    flex-direction: row;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.btn-adicionar {
+    background-color: #2ecc71;
+    margin-top: 10px;
+}
+
+.btn-adicionar:hover {
+    background-color: #27ae60;
+}
+
+.resumo {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #ecf0f1;
+}
+
+.resumo h3 {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.resumo p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.alerta {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #e74c3c;
+}
+
+.info-gasto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.descricao {
+    font-weight: bold;
+}
+
+.detalhes {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.btn-excluir {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+.btn-excluir:hover {
+    background-color: #c0392b;
+}
+
+@media (max-width: 480px) {
+    .resumo {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .input-group {
+        flex-direction: column;
+    }
+}
