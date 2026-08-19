@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Gastos</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Sistema de Controle de Gastos</h1>
@@ -39,10 +41,10 @@
             <div class="form-group">
                 <label>Descrição:</label>
                 <input type="text" id="descInput" placeholder="Ex: Almoço">
-                
+
                 <label>Valor (R$):</label>
                 <input type="number" id="valorInput" placeholder="Ex: 25.00" step="0.01">
-                
+
                 <label>Categoria:</label>
                 <select id="catInput">
                     <option value="">Selecione...</option>
@@ -54,10 +56,10 @@
                     <option value="Compras">Compras</option>
                     <option value="Outros">Outros</option>
                 </select>
-                
+
                 <label>Data:</label>
                 <input type="date" id="dataInput">
-                
+
                 <button class="btn-adicionar" onclick="adicionarGasto()">Adicionar Gasto</button>
             </div>
         </div>
@@ -72,6 +74,7 @@
     </div>
     <script src="script.js"></script>
 
-    
+
 </body>
+
 </html>

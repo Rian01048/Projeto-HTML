@@ -32,6 +32,8 @@ class Sistema {
         let telaLista = document.getElementById('listaGastos');
         telaLista.innerHTML = "";
 
+        this.lista.sort((a, b) => new Date(b.data) - new Date(a.data));
+
         for (let count = 0; count < this.lista.length; count++) {
             let item = this.lista[count];
 
@@ -39,7 +41,7 @@ class Sistema {
 
             telaLista.innerHTML += `
                 <li>
-                    ${item.descricao} - R$ ${item.valor} (${item.categoria} | ${item.data})
+                    ${item.descricao} - R$ ${item.valor} (${item.categoria} | ${formatarData(item.data)})
                     <button class="btn-excluir" onclick="excluirGasto(${count})">Excluir</button>
                 </li>
             `;
@@ -106,4 +108,9 @@ function adicionarGasto() {
 
 function excluirGasto(posicao) {
     app.remover(posicao);
+}
+
+function formatarData(data) {
+    let partes = data.split("-");
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
 }
