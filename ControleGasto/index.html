@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Controle de Gastos</h1>
+        <div class="card">
+            <h2>Definir Limite Mensal</h2>
+            <div class="input-group">
+                <input type="number" id="limiteInput" placeholder="Ex: 1000.00">
+                <button onclick="definirLimite()">Salvar Limite</button>
+            </div>
+        </div>
+
+        <div class="card resumo">
+            <div>
+                <h3>Limite Mensal</h3>
+                <p id="limiteAtual">R$ 0.00</p>
+            </div>
+            <div>
+                <h3>Total Gasto</h3>
+                <p id="totalGasto">R$ 0.00</p>
+            </div>
+            <div>
+                <h3>Saldo Disponível</h3>
+                <p id="saldoDisponivel">R$ 0.00</p>
+            </div>
+        </div>
+        <div id="avisoLimite" class="alerta" style="display: none;"></div>
+
+
+        <div class="card">
+            <h2>Cadastrar Novo Gasto</h2>
+            <div class="form-group">
+                <label>Descrição:</label>
+                <input type="text" id="descInput" placeholder="Ex: Almoço">
+                
+                <label>Valor (R$):</label>
+                <input type="number" id="valorInput" placeholder="Ex: 25.00" step="0.01">
+                
+                <label>Categoria:</label>
+                <select id="catInput">
+                    <option value="">Selecione...</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Lazer">Lazer</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Compras">Compras</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                
+                <label>Data:</label>
+                <input type="date" id="dataInput">
+                
+                <button class="btn-adicionar" onclick="adicionarGasto()">Adicionar Gasto</button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h2>Histórico de Gastos</h2>
+            <ul id="listaGastos">
+
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
