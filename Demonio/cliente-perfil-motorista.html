@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil do motorista — CarretoUber</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <a href="#" class="back" id="voltarLink">&larr; Voltar</a>
+    <div class="brand" style="font-size:1.05rem;">Perfil do motorista</div>
+    <div style="width:50px;"></div>
+  </div>
+
+  <div class="screen" id="conteudo">
+    <p class="small-print">Carregando...</p>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  const usuario = AUTH.exigirSessao('cliente');
+  const params = new URLSearchParams(window.location.search);
+  const motoristaId = params.get('motoristaId');
+  const solicitacaoId = params.get('solicitacaoId');
+
+  document.getElementById('voltarLink').href = solicitacaoId
+    ? 'cliente-busca.html?id=' + solicitacaoId
+    : 'cliente-busca.html';
+
+  const motorista = motoristaId ? DB.getUsuarioPorId(motoristaId) : null;
+  const conteudo = document.getElementById('conteudo');
+
+  if (!motorista) {
+    conteudo.innerHTML = '<p class="small-print">Motorista não encontrado.</p>';
+  } else {
+    const avaliacoes = DB.getAvaliacoesDoMotorista(motorista.id);
+    const avaliacoesHtml = avaliacoes.length
+      ? avaliacoes.slice(-3).reverse().map(a => `<p style="margin-bottom:8px;">"${a.comentario || 'Sem comentário.'}" — ${a.avaliadorNome || 'Cliente'}</p>`).join('')
+      : `<p style="margin-bottom:8px;">"Pontual e cuidadoso com os móveis." — Renata S.</p><p style="margin:0;">"Ajudou a carregar tudo sem reclamar." — Diego M.</p>`;
+
+    conteudo.innerHTML = `
+      <span class="eyebrow">RF-06 &middot; Dados do transportador</span>
+
+      <div class="card center" style="padding:26px 18px;">
+        <div class="avatar" style="width:74px; height:74px; font-size:1.7rem; margin:0 auto 12px auto;">${AUTH.iniciais(motorista.nome)}</div>
+        <h2 style="margin-bottom:2px;">${motorista.nome}</h2>
+        <div class="rating" style="margin-bottom:6px;">★★★★★ ${motorista.avaliacaoMedia} &middot; ${motorista.totalCorridas} corridas</div>
+        ${motorista.verificado ? '<span class="badge badge-success">Verificado</span>' : '<span class="badge badge-pending">Verificação pendente</span>'}
+      </div>
+
+      <div class="card">
+        <div class="field-row" style="margin-bottom:0;">
+          <div class="field" style="margin-bottom:0;">
+            <label>Veículo</label>
+            <div style="font-weight:600;">${motorista.veiculoTipo} &middot; ${motorista.veiculoPlaca}</div>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Modelo</label>
+            <div style="font-weight:600;">${motorista.veiculoModelo || '—'}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <label style="display:block; font-family:var(--display); font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--concreto); margin-bottom:8px;">Últimas avaliações</label>
+        ${avaliacoesHtml}
+      </div>
+
+      <div class="stack" style="margin-top:18px;">
+        <a href="${solicitacaoId ? 'cliente-orcamentos.html?id=' + solicitacaoId : 'cliente-orcamentos.html'}"><button class="btn btn-primary">Ver orçamentos recebidos</button></a>
+        <a href="cliente-chat.html?motoristaId=${motorista.id}${solicitacaoId ? '&solicitacaoId=' + solicitacaoId : ''}"><button class="btn btn-outline">💬 Enviar mensagem</button></a>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>

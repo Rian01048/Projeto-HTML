@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarretoUber</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="landing">
+    <span class="eyebrow">Frete sob demanda</span>
+    <h1 class="hero-mark">Carreto<span class="accent">Uber</span></h1>
+    <p class="hero-sub">Peça um frete, receba orçamentos de transportadores perto de você e acompanhe a carga em tempo real.</p>
+
+    <div class="stack">
+      <a href="login.html"><button class="btn btn-primary">Entrar</button></a>
+      <a href="cadastro.html"><button class="btn btn-outline">Criar conta</button></a>
+    </div>
+
+    <p class="small-print center" style="margin-top:28px;">Protótipo — SENAI Dendezeiros · CarretoUber v0.1</p>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  // Se já existir uma sessão ativa, pula direto para a home certa
+  const usuarioAtual = AUTH.getUsuarioAtual();
+  if (usuarioAtual) {
+    AUTH.irParaHome(usuarioAtual);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel — CarretoUber Admin</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <div class="brand">Carreto<span class="accent">Uber</span></div>
+    <span class="badge badge-neutral">Admin</span>
+  </div>
+
+  <div class="screen">
+    <span class="eyebrow">Painel administrativo</span>
+    <h1 style="font-size:1.6rem;">Visão geral da plataforma</h1>
+
+    <div class="field-row" id="statsBox">
+      <div class="card" style="flex:1;">
+        <div class="eyebrow">Corridas hoje</div>
+        <div style="font-family:var(--display); font-weight:800; font-size:1.8rem;" id="statCorridas">0</div>
+      </div>
+      <div class="card" style="flex:1;">
+        <div class="eyebrow">Cadastros pendentes</div>
+        <div style="font-family:var(--display); font-weight:800; font-size:1.8rem; color:var(--sinal);" id="statPendentes">0</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title"><h2>Cadastros para validar</h2></div>
+    <div class="stack" id="pendentesBox"></div>
+
+    <div class="divider"></div>
+
+    <div class="section-title"><h2>Denúncias abertas</h2></div>
+    <div class="stack" id="denunciasBox"></div>
+
+    <div class="divider"></div>
+    <button class="btn btn-ghost" id="btnSair">Sair</button>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  const usuario = AUTH.exigirSessao('admin');
+
+  function renderStats() {
+    const s = DB.stats();
+    document.getElementById('statCorridas').textContent = s.corridasHoje;
+    document.getElementById('statPendentes').textContent = s.pendentes;
+  }
+
+  function renderPendentes() {
+    const pendentes = DB.getMotoristasPendentes();
+    const box = document.getElementById('pendentesBox');
+    if (!pendentes.length) {
+      box.innerHTML = '<p class="small-print">Nenhum cadastro aguardando validação.</p>';
+      return;
+    }
+    box.innerHTML = pendentes.map(m => `
+      <div class="card driver-card">
+        <div class="avatar">${AUTH.iniciais(m.nome)}</div>
+        <div class="driver-info">
+          <div class="name">${m.nome}</div>
+          <div class="meta">Motorista &middot; ${m.veiculoModelo || 'veículo'} &middot; CNH ${m.cnhCategoria || '—'}</div>
+        </div>
+        <button class="btn btn-success btn-sm" data-validar="${m.id}">Validar</button>
+      </div>
+    `).join('');
+    box.querySelectorAll('[data-validar]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        DB.validarMotorista(btn.dataset.validar);
+        renderPendentes();
+        renderStats();
+      });
+    });
+  }
+
+  function renderDenuncias() {
+    const denuncias = DB.getDenuncias().filter(d => d.status === 'aberta');
+    const box = document.getElementById('denunciasBox');
+    if (!denuncias.length) {
+      box.innerHTML = '<p class="small-print">Nenhuma denúncia em aberto.</p>';
+      return;
+    }
+    box.innerHTML = denuncias.map(d => `
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-family:var(--display); font-weight:700;">Ocorrência</div>
+            <div class="small-print">${d.descricao}</div>
+          </div>
+          <button class="btn btn-outline btn-sm" data-resolver="${d.id}">Resolver</button>
+        </div>
+      </div>
+    `).join('');
+    box.querySelectorAll('[data-resolver]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        DB.resolverDenuncia(btn.dataset.resolver);
+        renderDenuncias();
+        renderStats();
+      });
+    });
+  }
+
+  document.getElementById('btnSair').addEventListener('click', () => {
+    AUTH.logout();
+    window.location.href = 'index.html';
+  });
+
+  renderStats();
+  renderPendentes();
+  renderDenuncias();
+</script>
+</body>
+</html>

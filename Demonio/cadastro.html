@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar conta — CarretoUber</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <a href="index.html" class="back">&larr; Voltar</a>
+    <div class="brand">Carreto<span class="accent">Uber</span></div>
+    <div style="width:60px;"></div>
+  </div>
+
+  <div class="screen">
+    <span class="eyebrow">RF-01 / RF-02 &middot; Cadastro</span>
+    <h1 style="font-size:1.7rem;">Criar conta</h1>
+
+    <div id="erroCadastro" class="card" style="display:none; border-color:var(--alerta); background:var(--alerta-bg); color:var(--giz);"></div>
+
+    <fieldset>
+      <legend>Tipo de conta</legend>
+      <div class="chip-group" id="tipoChips">
+        <button type="button" class="chip active" data-tipo="cliente">Sou Cliente</button>
+        <button type="button" class="chip" data-tipo="motorista">Sou Motorista</button>
+      </div>
+    </fieldset>
+
+    <form onsubmit="return false;">
+      <!-- Dados comuns -->
+      <div class="field">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" placeholder="Ex: Maria Eduarda Souza" required>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="idade">Idade</label>
+          <input type="number" id="idade" placeholder="27" min="18" required>
+        </div>
+        <div class="field">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" placeholder="000.000.000-00" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="nacionalidade">Nacionalidade</label>
+        <input type="text" id="nacionalidade" value="Brasileira">
+      </div>
+      <div class="field">
+        <label for="email2">E-mail</label>
+        <input type="email" id="email2" placeholder="voce@exemplo.com" required>
+      </div>
+      <div class="field">
+        <label for="senha2">Senha</label>
+        <input type="password" id="senha2" placeholder="Crie uma senha" required>
+      </div>
+
+      <!-- Bloco extra do motorista -->
+      <div id="blocoMotorista" style="display:none;">
+        <div class="divider"></div>
+        <span class="eyebrow">Dados do transportador</span>
+        <fieldset style="margin-top:12px;">
+          <legend>Documentação</legend>
+          <div class="field">
+            <label for="cnh">Número da CNH</label>
+            <input type="text" id="cnh" placeholder="00000000000">
+          </div>
+          <div class="field">
+            <label for="categoria">Categoria da CNH</label>
+            <select id="categoria">
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+              <option>E</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Veículo</legend>
+          <div class="field">
+            <label for="tipoveiculo">Tipo de veículo</label>
+            <select id="tipoveiculo">
+              <option>Carro utilitário / hatch</option>
+              <option>Pickup</option>
+              <option>Van / furgão</option>
+              <option>Caminhão 3/4</option>
+              <option>Caminhão baú</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="placa">Placa</label>
+              <input type="text" id="placa" placeholder="ABC1D23">
+            </div>
+            <div class="field">
+              <label for="ano">Ano</label>
+              <input type="text" id="ano" placeholder="2020">
+            </div>
+          </div>
+          <div class="field">
+            <label for="modelo">Modelo</label>
+            <input type="text" id="modelo" placeholder="Ex: Fiorino, HR, Saveiro">
+          </div>
+        </fieldset>
+        <p class="small-print">Sua documentação passará por validação do administrador antes de aparecer como "verificado" para os clientes.</p>
+      </div>
+
+      <button class="btn btn-primary" id="btnCadastrar" style="margin-top:6px;">Criar conta</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  let tipoConta = 'cliente';
+  const blocoMotorista = document.getElementById('blocoMotorista');
+  const erroBox = document.getElementById('erroCadastro');
+
+  document.querySelectorAll('#tipoChips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#tipoChips .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      tipoConta = chip.dataset.tipo;
+      blocoMotorista.style.display = (tipoConta === 'motorista') ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('btnCadastrar').addEventListener('click', () => {
+    erroBox.style.display = 'none';
+
+    const nome = document.getElementById('nome').value.trim();
+    const idade = document.getElementById('idade').value;
+    const cpf = document.getElementById('cpf').value.trim();
+    const nacionalidade = document.getElementById('nacionalidade').value.trim();
+    const email = document.getElementById('email2').value.trim();
+    const senha = document.getElementById('senha2').value;
+
+    if (!nome || !idade || !cpf || !email || !senha) {
+      erroBox.textContent = 'Preencha todos os campos obrigatórios.';
+      erroBox.style.display = 'block';
+      return;
+    }
+
+    const dados = {
+      tipo: tipoConta,
+      nome, idade: parseInt(idade, 10), cpf, nacionalidade, email, senha
+    };
+
+    if (tipoConta === 'motorista') {
+      dados.cnhNumero = document.getElementById('cnh').value.trim();
+      dados.cnhCategoria = document.getElementById('categoria').value;
+      dados.veiculoTipo = document.getElementById('tipoveiculo').value;
+      dados.veiculoPlaca = document.getElementById('placa').value.trim();
+      dados.veiculoAno = document.getElementById('ano').value.trim();
+      dados.veiculoModelo = document.getElementById('modelo').value.trim();
+    }
+
+    const resultado = DB.criarUsuario(dados);
+    if (resultado.erro) {
+      erroBox.textContent = resultado.erro;
+      erroBox.style.display = 'block';
+      return;
+    }
+
+    AUTH.login(resultado.usuario.id);
+    AUTH.irParaHome(resultado.usuario);
+  });
+</script>
+</body>
+</html>

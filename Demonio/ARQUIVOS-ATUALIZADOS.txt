@@ -1,0 +1,54 @@
+CARRETOUBER — ARQUIVOS REFATORADOS
+
+ARQUIVOS EXISTENTES ATUALIZADOS
+- cliente-home.html
+- cliente-solicitar.html
+- cliente-seguro.html
+- cliente-busca.html
+- cliente-orcamentos.html
+- cliente-comparar-orcamentos.html
+- cliente-acompanhar.html
+- cliente-recebimento.html
+- cliente-perfil.html
+- cliente-avaliar.html
+- motorista-home.html
+- motorista-orcar.html
+- motorista-perfil.html
+- motorista-corrida.html
+- css/style.css
+- js/db.js
+
+NOVOS ARQUIVOS DE JAVASCRIPT
+- js/ui.js
+- js/cliente-home.js
+- js/cliente-solicitar.js
+- js/cliente-seguro.js
+- js/cliente-busca.js
+- js/cliente-orcamentos.js
+- js/cliente-comparar-orcamentos.js
+- js/cliente-acompanhar.js
+- js/cliente-recebimento.js
+- js/cliente-perfil.js
+- js/cliente-avaliar.js
+- js/motorista-home.js
+- js/motorista-orcar.js
+- js/motorista-perfil.js
+- js/motorista-corrida.js
+
+DOCUMENTAÇÃO ADICIONADA
+- README-REFATORACAO.md
+- ARQUIVOS-ATUALIZADOS.txt
+
+PRINCIPAIS MUDANÇAS
+- Regras de negócio RF-11 a RF-17 centralizadas e validadas no js/db.js.
+- Migração automática de dados antigos do localStorage para o schema atual.
+- Scripts das telas pós-MVP retirados do HTML e separados por página.
+- Utilitários compartilhados de interface em js/ui.js.
+- Agendamento no mesmo dia permitido desde que o horário seja futuro.
+- Orçamentos incompatíveis/duplicados bloqueados também na camada de dados.
+- Endereço alternativo validado como pertencente ao cliente e protegido enquanto estiver em uso.
+- Assinatura reimplementada com Pointer Events para mouse, toque e caneta.
+- Comprovante de recebimento consultável posteriormente, incluindo a imagem da assinatura.
+- Avaliação protegida por regra de negócio: somente após recebimento assinado.
+- Corrida concluída permanece consultável pelo motorista após a última etapa.
+- Comparação destaca valor, avaliação, prazo, corridas, montagem, veículo adequado ao volume e mensagem mais detalhada.

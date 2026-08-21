@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — CarretoUber</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <a href="index.html" class="back">&larr; Voltar</a>
+    <div class="brand">Carreto<span class="accent">Uber</span></div>
+    <div style="width:60px;"></div>
+  </div>
+
+  <div class="screen">
+    <span class="eyebrow">Acesso</span>
+    <h1 style="font-size:1.7rem;">Entrar na conta</h1>
+    <p>Use o e-mail cadastrado para acessar como cliente, motorista ou administrador.</p>
+
+    <div id="erroLogin" class="card" style="display:none; border-color:var(--alerta); background:var(--alerta-bg); color:var(--giz);"></div>
+
+    <form id="loginForm" onsubmit="return false;">
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="voce@exemplo.com" required>
+      </div>
+      <div class="field">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required>
+      </div>
+
+      <button class="btn btn-primary" id="submitLogin">Entrar</button>
+    </form>
+
+    <div class="divider"></div>
+
+    <span class="eyebrow">Contas de demonstração</span>
+    <p class="small-print">Use qualquer uma para testar sem precisar cadastrar (senha: <strong>123456</strong>)</p>
+    <div class="stack">
+      <button class="btn btn-outline btn-sm" style="width:100%;" data-demo="maria@exemplo.com">👤 Cliente — maria@exemplo.com</button>
+      <button class="btn btn-outline btn-sm" style="width:100%;" data-demo="joao@exemplo.com">🚚 Motorista — joao@exemplo.com</button>
+      <button class="btn btn-outline btn-sm" style="width:100%;" data-demo="admin@carretouber.com">🛠️ Admin — admin@carretouber.com</button>
+    </div>
+
+    <p class="small-print center" style="margin-top:18px;">Não tem conta? <a href="cadastro.html" style="color:var(--sinal); font-weight:600;">Cadastre-se</a></p>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  const erroBox = document.getElementById('erroLogin');
+
+  function tentarLogin(email, senha) {
+    const usuario = DB.getUsuarioPorEmail(email);
+    if (!usuario || usuario.senha !== senha) {
+      erroBox.textContent = 'E-mail ou senha inválidos. Confira os dados e tente novamente.';
+      erroBox.style.display = 'block';
+      return;
+    }
+    AUTH.login(usuario.id);
+    AUTH.irParaHome(usuario);
+  }
+
+  document.getElementById('submitLogin').addEventListener('click', () => {
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value;
+    if (!email || !senha) {
+      erroBox.textContent = 'Preencha e-mail e senha para continuar.';
+      erroBox.style.display = 'block';
+      return;
+    }
+    tentarLogin(email, senha);
+  });
+
+  document.querySelectorAll('[data-demo]').forEach(btn => {
+    btn.addEventListener('click', () => tentarLogin(btn.dataset.demo, '123456'));
+  });
+</script>
+</body>
+</html>

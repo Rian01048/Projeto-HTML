@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar carreto — CarretoUber</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <a href="cliente-home.html" class="back">&larr; Voltar</a>
+    <div class="brand page-title">Nova solicitação</div>
+    <div class="topbar-spacer"></div>
+  </div>
+
+  <main class="screen">
+    <span class="eyebrow">RF-03/11 · Dados e agendamento</span>
+    <h1 class="screen-title">Como será o seu frete?</h1>
+
+    <div id="erroForm" class="form-error" hidden></div>
+
+    <form id="formSolicitacao" onsubmit="return false;">
+      <div class="field">
+        <label for="origem">Endereço de coleta</label>
+        <input type="text" id="origem" placeholder="Rua, número, bairro" value="Rua Direita do Dendezeiros, 45">
+      </div>
+
+      <div class="field">
+        <label for="destino">Endereço de entrega</label>
+        <input type="text" id="destino" placeholder="Rua, número, bairro">
+      </div>
+
+      <fieldset>
+        <legend>Quando deseja o frete?</legend>
+        <div class="choice-grid">
+          <label class="choice-card active">
+            <input type="radio" name="modalidade" value="imediata" checked>
+            <strong>⚡ Imediato</strong>
+            <span>Buscar transportadores disponíveis agora.</span>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="modalidade" value="agendada">
+            <strong>🗓️ Agendar</strong>
+            <span>Escolher uma data e um horário futuros.</span>
+          </label>
+        </div>
+
+        <div id="agendamentoBox" class="field-row scheduling-fields" hidden>
+          <div class="field">
+            <label for="dataAgendada">Data</label>
+            <input type="date" id="dataAgendada">
+          </div>
+          <div class="field">
+            <label for="horaAgendada">Horário</label>
+            <input type="time" id="horaAgendada">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tipo de carga</legend>
+        <div class="chip-group" id="cargaChips">
+          <button type="button" class="chip active" data-carga="Móveis">Móveis</button>
+          <button type="button" class="chip" data-carga="Eletrodomésticos">Eletrodomésticos</button>
+          <button type="button" class="chip" data-carga="Material de construção">Material de construção</button>
+          <button type="button" class="chip" data-carga="Doação">Doação</button>
+          <button type="button" class="chip" data-carga="Outro">Outro</button>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="volume">Volume aproximado</label>
+        <select id="volume">
+          <option>Pequeno — cabe num carro (até 3 itens)</option>
+          <option selected>Médio — cabe numa van</option>
+          <option>Grande — precisa de caminhão 3/4</option>
+        </select>
+      </div>
+
+      <fieldset>
+        <legend>RF-13 · Serviço adicional</legend>
+        <label class="toggle-option">
+          <input type="checkbox" id="necessitaMontador">
+          <span>
+            <strong>Preciso de montagem de móveis</strong>
+            <small>Apenas transportadores habilitados poderão enviar orçamento.</small>
+          </span>
+        </label>
+      </fieldset>
+
+      <div class="field">
+        <label for="obs">Observações (opcional)</label>
+        <textarea id="obs" placeholder="Ex: sofá de 3 lugares, geladeira, precisa de 2 pessoas para carregar"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-primary" id="btnBuscar">Continuar para seguro</button>
+    </form>
+  </main>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/cliente-solicitar.js"></script>
+</body>
+</html>

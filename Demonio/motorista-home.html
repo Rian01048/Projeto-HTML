@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início — CarretoUber Motorista</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div class="topbar">
+    <div class="brand">Carreto<span class="accent">Uber</span></div>
+    <span class="badge badge-neutral">Motorista</span>
+  </div>
+
+  <main class="screen">
+    <span class="eyebrow" id="saudacao">Olá</span>
+    <h1 class="home-title">Solicitações perto de você</h1>
+
+    <div class="card availability-card">
+      <div>
+        <div class="eyebrow status-eyebrow">Status</div>
+        <div class="status-title" id="statusTexto">Disponível para corridas</div>
+      </div>
+      <label class="availability-toggle" aria-label="Alterar disponibilidade">
+        <input type="checkbox" id="toggleOnline">
+      </label>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title"><h2>Novas solicitações</h2></div>
+    <div class="stack" id="listaSolicitacoes"></div>
+
+    <div class="divider"></div>
+
+    <div class="section-title"><h2>Corrida ativa</h2></div>
+    <div id="corridaAtivaBox">
+      <p class="small-print">Nenhuma corrida ativa no momento.</p>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="motorista-home.html" class="active"><span class="icon">🏠</span>Início</a>
+    <a href="motorista-corrida.html"><span class="icon">🚚</span>Corrida</a>
+    <a href="motorista-perfil.html"><span class="icon">👤</span>Perfil</a>
+  </nav>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/motorista-home.js"></script>
+</body>
+</html>
