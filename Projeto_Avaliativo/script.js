@@ -6,18 +6,18 @@ const URL_API = `${HTTPS}${DNS}${ROUTE}`
 let pokemon = []
 
 // Definindo uma função onde vai aparecer por um instante a tela de carregamento enquanto a lista dos pokemons não é mostrada
-function mostrarLoading() {
-    document.querySelector("#loading").classList.remove("escondido")
+function mostrarCarregamento() {
+    document.querySelector("#carregamento").classList.remove("escondido")
     document.querySelector("#card-Pokemon").innerHTML = ""
 }
 
-// Função de esconder
-function esconderLoading() {
-    document.querySelector("#loading").classList.add("escondido")
+// Função de esconder o carregamento
+function esconderCarregamento() {
+    document.querySelector("#carregamento").classList.add("escondido")
 }
 
 async function carregarPokemon() {
-    mostrarLoading() //Carregamento
+    mostrarCarregamento() //Carregamento
     try {
         const resposta = await fetch(URL_API)
         const dados = await resposta.json()
@@ -26,7 +26,7 @@ async function carregarPokemon() {
     } catch (erro) {
         console.error(erro)
     } finally { //Após a execução do codigo, vai chamar a função de esconder o carregamento
-        esconderLoading()
+        esconderCarregamento()
     }
 }
 
@@ -50,7 +50,7 @@ function mostrarPokemon(lista) {
 
 // Repetindo a mesma estrutura acima para informações
 async function verInformacao(id) {
-    mostrarLoading()
+    mostrarCarregamento()
 
     try {
         const site = `https://pokeapi.co/api/v2/pokemon/${id}/`
@@ -77,7 +77,7 @@ async function verInformacao(id) {
     } catch (erro) {
         console.error(erro)
     } finally {
-        esconderLoading()
+        esconderCarregamento()
     }
 }
 
