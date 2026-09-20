@@ -16,13 +16,41 @@
     </header>
 
     <main>
-        <h1 style="text-align: center;">PESQUISA</h1>
+        <h1 class="titulo-pesquisa">PESQUISA</h1>
         <input type="text" id="campoBusca" placeholder="Digite o nome do pokémon...">
-        <button onclick="buscarPokemon()">Buscar</button>
+        <button id="btnBuscar" onclick="buscarPokemon()">Buscar</button>
+
+        <div id="loading" class="escondido">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" alt="Carregando" class="pokebola-giratoria">
+            <p>Carregando Pokédex...</p>
+        </div>
 
         <div id="card-Pokemon"></div>
     </main>
 
+    <footer>
+        <h1 class="titulo-footer">
+            The Pokémon Company</h1>
+        <div class="redes-sociais">
+
+
+            <a href="https://www.youtube.com/@pokemon"><img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="yt-logo"></a>
+
+
+            <a href="https://www.twitch.tv/directory/category/pokemon?lang=pt-br"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8shTgsSVwJMKY7sMYJh3WBjrPdnS1o-0aHyZdpbIAxQ&s=10" alt="yt-logo"></a>
+
+
+            <a href="https://www.instagram.com/pokemon/"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/250px-Instagram_logo_2016.svg.png?utm_source=commons.wikimedia.org&utm_campaign=parser&utm_content=thumbnail" alt="yt-logo"></a>
+
+
+            <a href="https://www.facebook.com/Pokemon/"><img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/698/small/facebook-logo-facebook-icon-transparent-free-png.png" alt="yt-logo"></a>
+        </div>
+
+
+        <div class="desenvolvido">
+            <h1>Desenvolvido por Rian Souza - Anna Miranda - João Nonato</h1>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

@@ -49,11 +49,12 @@ main {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
 }
 
-main h1 {
+.titulo-pesquisa {
     color: #db3b42;
     font-size: 45px;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 #campoBusca {
@@ -72,7 +73,7 @@ main h1 {
     color: #cccccc;
 }
 
-main>button {
+#btnBuscar {
     width: 100%;
     padding: 12px;
     border-radius: 30px;
@@ -86,11 +87,11 @@ main>button {
     transition: background-color 0.2s, transform 0.1s;
 }
 
-main>button:hover {
+#btnBuscar:hover {
     background-color: #d6333a;
 }
 
-main>button:active {
+#btnBuscar:active {
     transform: scale(0.98);
 }
 
@@ -162,4 +163,111 @@ main>button:active {
 
 .pokemon button:hover {
     background-color: #d6333a;
+}
+
+.pokemon-detalhe {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.pokemon-detalhe img {
+    width: 200px;
+    height: 200px;
+    max-width: none;
+}
+
+#loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#loading p {
+    color: #db3b42;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.escondido {
+    display: none !important;
+}
+
+.pokebola-giratoria {
+    width: 80px;
+    height: 80px;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+footer {
+    width: 100%;
+    background-color: #fc3c44;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px 20px 20px;
+    margin-top: auto;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-footer {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.redes-sociais a img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.redes-sociais a img:hover {
+    transform: scale(1.15) translateY(-4px);
+    background-color: #f4f4f4;
+}
+
+.desenvolvido {
+    width: 100%;
+    max-width: 600px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 16px;
+    text-align: center;
+}
+
+.desenvolvido h1 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
 }
