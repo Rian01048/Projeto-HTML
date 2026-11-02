@@ -17,7 +17,7 @@ conexao.connect((err) => {
     console.log("onexão feita")
 })
 
-const sql = `
+const sql1 = `
  create table if not exists cadastros (
     id int auto_increment primary key,
     nomeCompleto varchar(200) not null,
@@ -27,9 +27,30 @@ const sql = `
  )
 `
 
-conexao.query(sql, (err) => {
+const sql2 = `
+ create table if not exists pets (
+    id int auto_increment primary key,
+    nome varchar(100) not null,
+    especie varchar(100) not null,
+    situacao varchar(100) not null,
+    preco decimal(10,2) default 0,
+    bairro varchar(150) not null,
+    cidade varchar(150) not null,
+    telefone varchar(11) not null,
+    foto varchar(255) not null
+)
+`
+
+conexao.query(sql1, (err) => {
     if (err) throw err
-    console.log('Tabela criada com sucesso')
+    console.log("Primeira tabela criada")
 })
+
+conexao.query(sql2, (err) => {
+    if (err) throw err
+    console.log("Segunda tabela criada")
+})
+
+
 
 module.exports = conexao
