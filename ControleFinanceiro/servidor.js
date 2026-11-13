@@ -14,7 +14,7 @@ app.post('/categoria', (req, res) => {
             console.log("Erro ao salvar", err)
             return res.status(500).json({ erro: "Erro ao cadastrar" })
         }
-        res.status(200).json({ mensagem: "ategoria cadastrada" })
+        res.status(200).json({ mensagem: "categoria cadastrada" })
     })
 })
 
